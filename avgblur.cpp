@@ -76,7 +76,7 @@ buffer[storage_col][storage_row] = p_in.data;
 
  //send user signal when a new output frame starts
 if ((output_row == 0)&&(output_col==0)){
-	p_out.user = 1;
+	p_out.user = 1;  // p_out.user indicates whether a new frame has been fully processed and is ready to output
 } else {
     p_out.user = 0;
 }
@@ -99,7 +99,7 @@ for (j= -kmax;j<=(kmax);j++) {
 //instead of slow and inaccurate integer division, convert it to shift
 uint8_t yshift = 0;
 uint16_t yy = 2*y+1;
-for (uint16_t j =0;j<1;j++) {
+for (uint16_t j =0;j<1;j++) { // 这里j < 1有问题
 	yy >> 1;
 	if (yy!=0) {
 		yshift++;
